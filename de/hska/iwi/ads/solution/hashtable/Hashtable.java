@@ -24,9 +24,6 @@ public class Hashtable<K extends Comparable<K>, V> extends AbstractHashMap<K, V>
         return -1;
     }
 
-    public void delete(K key) {
-        throw new UnsupportedOperationException();
-    }
 
     @SuppressWarnings("unchecked")
     public V get(Object o) {

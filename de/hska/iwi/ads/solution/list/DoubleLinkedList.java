@@ -45,9 +45,6 @@ public class DoubleLinkedList<K extends Comparable<K>, V> extends AbstractDouble
         return null;
     }
 
-    public void delete(K key) {
-        throw new UnsupportedOperationException("Not implemented yet");
-    }
 
     public V put(K key, V value) {
         if (key == null) {
