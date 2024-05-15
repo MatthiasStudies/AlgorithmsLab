@@ -3,32 +3,18 @@ package de.hska.iwi.ads.solution.list;
 import de.hska.iwi.ads.dictionary.AbstractDoubleLinkedList;
 
 public class DoubleLinkedList<K extends Comparable<K>, V> extends AbstractDoubleLinkedList<K, V> {
-    private ListElement tail;
-
     private Entry<K, V> getEntry(K key) {
         if (head == null) return null;
 
         ListElement currentLeft = head;
-        ListElement currentRight = tail;
 
-
-        do {
+        while(currentLeft != null) {
             if (currentLeft.entry.getKey().equals(key)) {
                 return currentLeft.entry;
             }
-            if (currentRight.entry.getKey().equals(key)) {
-                return currentRight.entry;
-            }
 
             currentLeft = currentLeft.next;
-            currentRight = currentRight.previous;
-        } while (currentLeft != currentRight && currentLeft.previous != currentRight);
-
-        // Required: If the element is the middle of the list
-        if (currentLeft != null && currentLeft.entry.getKey().equals(key)) {
-            return currentLeft.entry;
         }
-
         return null;
     }
 
@@ -54,9 +40,7 @@ public class DoubleLinkedList<K extends Comparable<K>, V> extends AbstractDouble
         Entry<K, V> existing = getEntry(key);
 
         if (existing != null) {
-            V oldValue = existing.getValue();
-            existing.setValue(value);
-            return oldValue;
+            return existing.setValue(value);
         }
 
         SimpleEntry<K, V> entry = new SimpleEntry<>(key, value);
@@ -65,9 +49,8 @@ public class DoubleLinkedList<K extends Comparable<K>, V> extends AbstractDouble
 
         if (head != null) {
             head.previous = new_;
-        } else {
-            tail = new_;
         }
+
         head = new_;
         this.size++;
 
