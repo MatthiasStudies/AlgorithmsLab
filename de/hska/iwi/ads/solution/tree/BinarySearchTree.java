@@ -52,8 +52,8 @@ public class BinarySearchTree<K extends Comparable<K>, V> extends AbstractBinary
         while (x != null) {
             K xKey = x.entry.getKey();
             K zKey = z.entry.getKey();
-            if (zKey.equals(xKey)) {
-//                throw new Exception("Double key");
+            if (zKey.equals(xKey)) { // this should never happen
+                throw new IllegalArgumentException("Double key");
             }
 
             y = x;
